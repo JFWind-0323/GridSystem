@@ -1,7 +1,8 @@
-using UnityEngine.UI;
-using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
 public class WhackMoleAgent : GridAgentBase
 {
     public GameObject molePrefab;
@@ -9,30 +10,14 @@ public class WhackMoleAgent : GridAgentBase
     public int Score;
     public TMP_Text scoreText;
 
-    public override void Awake()
-    {
-        base.Awake();
-    }
-    public override void Start()
-    {
-        base.Start();
-        StartCoroutine(MoleOutCoroutine());
-    }
-
-    public override void Update()
-    {
-        base.Update();
-        if (Input.GetMouseButtonDown(0))
-        {
-            HitTheMole();
-        }
-    }
-
     public override void RegisterEvents()
     {
         base.RegisterEvents();
         grid.OnGridChanged += CreateOrDestroyMole;
     }
+
+    #region GamePlay
+
 
     void CreateOrDestroyMole(int x, int y, int value)
     {
@@ -65,6 +50,7 @@ public class WhackMoleAgent : GridAgentBase
         int y = Random.Range(0, height);
         grid.SetCell(x, y, 1);
     }
+
     IEnumerator MoleOutCoroutine()
     {
         while (true)
@@ -78,15 +64,45 @@ public class WhackMoleAgent : GridAgentBase
     {
         Vector3 mousePos = GridWithWorldTool.GetMousePosFromWorld();
         WorldPosToXY(mousePos, out int x, out int y);
-        if (grid.gridArray[x, y] == 1)
+        if (x < 0 || x >= width || y < 0 || y >= height)
         {
-            Score++;
-            grid.SetCell(x, y, 0);
+            Score--; // 超出边界，扣分
+        }
+        else if (grid.gridArray[x, y] == 1)
+        {
+            Score++; // 击中鼹鼠，得分
+            grid.SetCell(x, y, 0); // 清除击中位置的鼹鼠
         }
         else
         {
-            Score--;
+            Score--; // 未击中，扣分
         }
+
+        // 更新分数显示
         scoreText.text = "Score: " + Score;
     }
+    #endregion
+
+    #region Unity
+
+    public override void Awake()
+    {
+        base.Awake();
+    }
+
+    public override void Start()
+    {
+        base.Start();
+        StartCoroutine(MoleOutCoroutine());
+    }
+
+    public override void Update()
+    {
+        base.Update();
+        if (Input.GetMouseButtonDown(0))
+        {
+            HitTheMole();
+        }
+    }
+    #endregion
 }
