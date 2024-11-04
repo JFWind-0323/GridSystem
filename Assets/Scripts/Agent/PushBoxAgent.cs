@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class PushBoxAgent : GridAgentBase
 {
+    public List<Box> boxes;
     #region Unity
-    public override void Awake()
+
+    protected override void Awake()
     {
         base.Awake();
     }
@@ -20,4 +22,5 @@ public class PushBoxAgent : GridAgentBase
         base.Update();
     }
     #endregion
+
 }

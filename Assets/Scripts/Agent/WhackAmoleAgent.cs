@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class WhackMoleAgent : GridAgentBase
 {
@@ -85,7 +84,7 @@ public class WhackMoleAgent : GridAgentBase
 
     #region Unity
 
-    public override void Awake()
+    protected override void Awake()
     {
         base.Awake();
     }

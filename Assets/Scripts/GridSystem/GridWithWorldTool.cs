@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public static class GridWithWorldTool
 {
+    // 将网格绘制到世界空间中
     public static void DrawGridIntoWorld(int[,] gridArray, Vector3 origin, float cellSize)
     {
         int width = gridArray.GetLength(0);
         int height = gridArray.GetLength(1);
 
-        for (int i = 0; i <= width; i++) // 注意这里的 <=
+        for (int i = 0; i <= width; i++) // 注意 <=
         {
             Vector3 startHorizontal = new Vector3(origin.x + i * cellSize, origin.y, 0);
             Vector3 endHorizontal = new Vector3(
@@ -20,7 +19,7 @@ public static class GridWithWorldTool
             Debug.DrawLine(startHorizontal, endHorizontal, Color.white, 2000f); // 绘制垂直线
         }
 
-        for (int j = 0; j <= height; j++) // 注意这里的 <=
+        for (int j = 0; j <= height; j++) // 注意 <=
         {
             Vector3 startVertical = new Vector3(origin.x, origin.y - j * cellSize, 0);
             Vector3 endVertical = new Vector3(
@@ -32,6 +31,7 @@ public static class GridWithWorldTool
         }
     }
 
+    // 获取当前鼠标在世界空间中的位置
     public static Vector3 GetMousePosFromWorld()
     {
         Vector3 mousePos = Input.mousePosition;
@@ -40,6 +40,7 @@ public static class GridWithWorldTool
         return new Vector3(worldPos.x, worldPos.y, 0);
     }
 
+    // 将世界坐标转换为网格的X和Y索引
     public static void WorldPosToXY(
         Vector3 worldPos,
         Vector3 originWorldPos,
@@ -53,6 +54,7 @@ public static class GridWithWorldTool
         y = -(int)(worldPos.y - originWorldPos.y) / cellSize;
     }
 
+    // 将网格的X和Y索引转换为世界坐标
     public static Vector3 XYToWorldPos(int x, int y, Vector3 originWorldPos, int cellSize)
     {
         float halfcellSize = (float)cellSize / 2;

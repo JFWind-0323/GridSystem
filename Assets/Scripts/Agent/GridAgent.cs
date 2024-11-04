@@ -1,10 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-public class GridAgentBase : MonoBehaviour
+public class GridAgentBase : Agent<GridAgentBase>
 {
     public Grid grid;
     public int width;
@@ -14,7 +11,7 @@ public class GridAgentBase : MonoBehaviour
     public Vector3Int originWorldPos;
 
     [ShowInInspector]
-    public int[,] DebugGridArray;
+    public int[,] debugGridArray;
 
     //设置格子值
     public virtual void SetCell(int x, int y, int value)
@@ -64,15 +61,16 @@ public class GridAgentBase : MonoBehaviour
     // 更新调试数组
     private void UpdateDebugGridArray(int x, int y, int value)
     {
-        DebugGridArray ??= new int[width, height];
-        DebugGridArray[x, y] = value;
+        debugGridArray ??= new int[width, height];
+        debugGridArray[x, y] = value;
     }
 
     #endregion
 
     #region 基本生命周期
-    public virtual void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         grid = new Grid(width, height, cellSize);
         grid.DrawGrid(gameObject, originWorldPos, cellSize);
     }

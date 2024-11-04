@@ -96,7 +96,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 3bf436c5145b21c45886763557e63a74, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b2ea9be6ee7bef49870cc467ed565dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelName: yts
+  levelName: lyx
   GOList: []
   gridParent: {fileID: 1991191914}
   originWorldPos: {x: -5, y: 5, z: 0}
