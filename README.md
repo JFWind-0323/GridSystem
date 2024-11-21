@@ -1,0 +1,4 @@
+核心事件OnGridChanged
+核心函数SetSell
+具体使用只要继承GridAgentBase，重写其中的方法，并且添加自己的逻辑即可
+关于是否使用OnGridChanged，看需求自选即可
