@@ -219,37 +219,6 @@ public class BoxLevel : MonoBehaviour
     }
     #endregion
 
-    // #region 数组转换工具
-    // T[] Array2DToArray<T>(T[,] array2D)
-    // {
-    //     int row = array2D.GetLength(0);
-    //     int col = array2D.GetLength(1);
-    //     int length = row * col;
-    //     T[] array = new T[length];
-    //     for (int i = 0; i < row; i++)
-    //     {
-    //         for (int j = 0; j < col; j++)
-    //         {
-    //             array[i * col + j] = array2D[i, j];
-    //         }
-    //     }
-    //     return array;
-    // }
-
-    // T[,] ArrayToArray2D<T>(T[] array2D, int width, int height)
-    // {
-    //     T[,] array = new T[width, height];
-    //     for (int i = 0; i < width; i++)
-    //     {
-    //         for (int j = 0; j < height; j++)
-    //         {
-    //             array[i, j] = array2D[i * height + j];
-    //         }
-    //     }
-    //     return array;
-    // }
-    // #endregion
-
     #region 数据操作
     void SaveLevel()
     {

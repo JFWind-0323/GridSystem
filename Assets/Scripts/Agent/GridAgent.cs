@@ -16,6 +16,7 @@ public class GridAgentBase : Agent<GridAgentBase>
     //设置格子值
     public virtual void SetCell(int x, int y, int value)
     {
+        //在不需要回调时调用
         grid.gridArray[x, y] = value;
     }
 

@@ -83,12 +83,7 @@ public class WhackMoleAgent : GridAgentBase
     #endregion
 
     #region Unity
-
-    protected override void Awake()
-    {
-        base.Awake();
-    }
-
+    
     public override void Start()
     {
         base.Start();
